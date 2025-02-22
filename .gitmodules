@@ -1,3 +1,6 @@
 [submodule "Depth-Anything-V2"]
 	path = Depth-Anything-V2
 	url = git@github.com:tae-h-yang/Depth-Anything-V2.git
+[submodule "ml-hypersim"]
+	path = ml-hypersim
+	url = git@github.com:tae-h-yang/ml-hypersim.git
