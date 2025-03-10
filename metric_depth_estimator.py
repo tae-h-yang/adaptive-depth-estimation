@@ -1,45 +1,8 @@
 import cv2
 import torch
-import numpy as np
 from timeit import default_timer as timer
 from metric_depth.depth_anything_v2.dpt import DepthAnythingV2
 from util import inspect_depth
-
-# model_configs = {
-#     'vits': {'encoder': 'vits', 'features': 64, 'out_channels': [48, 96, 192, 384]},
-#     'vitb': {'encoder': 'vitb', 'features': 128, 'out_channels': [96, 192, 384, 768]},
-#     'vitl': {'encoder': 'vitl', 'features': 256, 'out_channels': [256, 512, 1024, 1024]}
-# }
-
-# '''
-# 'vitl' or 'vits', 'vitb'
-# '''
-# encoder = 'vitl' 
-
-# dataset = 'hypersim' # 'hypersim' for indoor model, 'vkitti' for outdoor model
-
-# '''
-# '''
-# max_depth = 20 # 20 for indoor model, 80 for outdoor model
-
-# device = torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
-
-# # torch.backends.mps.is_available = lambda: False
-# # torch.backends.mps.is_built = lambda: False
-# # device = "cpu"
-
-# model = DepthAnythingV2(**{**model_configs[encoder], 'max_depth': max_depth})
-# model.to(device)  # Move model to MPS
-# # model.half()
-# model.load_state_dict(torch.load(f'checkpoints/depth_anything_v2_metric_{dataset}_{encoder}.pth', map_location='cpu'))
-# model.eval()
-
-# raw_img = cv2.imread('datasets/TUM_RGBD/rgbd_dataset_freiburg1_desk/depth/1305031453.374112.png')
-
-# start = timer()
-# depth = model.infer_image(raw_img) # HxW depth map in meters in numpy
-# end = timer()
-# print(f"Inference time: {end - start:.6f} seconds")
 
 class MetricDepthEstimator(DepthAnythingV2):
     def __init__(self, encoder='vitl', dataset='hypersim', max_depth=20):
@@ -102,7 +65,7 @@ class MetricDepthEstimator(DepthAnythingV2):
         return metric_depth
 
 if __name__ == "__main__":
-    metric_depth_estimator = MetricDepthEstimator(encoder='vits', dataset='hypersim', max_depth=20)
+    metric_depth_estimator = MetricDepthEstimator(encoder='vitl', dataset='hypersim', max_depth=20)
     start = timer()
     metric_depth = metric_depth_estimator.infer('datasets/TUM_RGBD/rgbd_dataset_freiburg1_desk/rgb/1305031453.359684.png')
     end = timer()
