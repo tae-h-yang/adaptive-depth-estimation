@@ -1,0 +1,30 @@
+<!DOCTYPE MeshLabDocument>
+<MeshLabProject>
+ <MeshGroup>
+  <MLMesh idInFile="-1" filename="gt_pointcloud.ply" visible="1" label="gt_pointcloud.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="7" pointColor="252 233 79 255" wireWidth="1" solidColor="192 192 192 255" wireColor="64 64 64 255" boxColor="234 234 234 255">000110010000000000000100000001000000001010100000000100111010110000011101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="rescaled_depth_gt.ply" visible="0" label="rescaled_depth_gt.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="1" pointColor="2 250 0 255" wireWidth="1" solidColor="192 192 192 255" wireColor="64 64 64 255" boxColor="234 234 234 255">000110000000000000000000000000000000000010100000000100111011110000011101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="rescaled_depth_predicted.ply" visible="1" label="rescaled_depth_predicted.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="1" pointColor="0 4 249 255" wireWidth="1" solidColor="192 192 192 255" wireColor="64 64 64 255" boxColor="234 234 234 255">000110000000000000000000000000000000000010100000000100111011110000011101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="unscaled_depth.ply" visible="0" label="unscaled_depth.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="1" pointColor="255 0 0 255" wireWidth="1" solidColor="192 192 192 255" wireColor="64 64 64 255" boxColor="234 234 234 255">000110000000000000000000000000000000000010100000000100111011110000011101</RenderingOption>
+  </MLMesh>
+ </MeshGroup>
+ <RasterGroup/>
+</MeshLabProject>
