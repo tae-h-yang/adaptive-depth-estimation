@@ -11,11 +11,11 @@ rgb_file = f"{dataset_path}/rgb.txt"
 depth_file = f"{dataset_path}/depth.txt"
 
 # max_difference is reduced to 0.01 from default 0.02
-matched_pairs = associate_time_stamps(rgb_file, depth_file, max_difference=0.01)
+matched_pairs = associate_time_stamps(rgb_file, depth_file, max_difference=0.02)
 # matched_pairs = associate_time_stamps(rgb_file, depth_file, max_difference=0.01)
 
 # === Load DA2 Model ===
-model = MetricDepthEstimator(encoder='vitl', dataset='hypersim', max_depth=13)
+model = MetricDepthEstimator(encoder='vits', dataset='hypersim', max_depth=13)
 
 # === Initialize Metrics ===
 abs_rel_errors, rmse_errors, delta1, delta2, delta3 = [], [], [], [], []
@@ -23,8 +23,10 @@ inference_times = []  # Track inference times
 
 # evaluate_matched_pairs(matched_pairs)
 
+i = 0
 # === Process Each Matched Image Pair ===
 for _, rgb_path, _, depth_path in tqdm(matched_pairs, desc="Evaluting metric depth estimation", unit="pair"):
+    i += 1
     # Load RGB and Depth Images
     # Extract file paths from lists
     rgb = cv2.imread(f"{dataset_path}/{rgb_path[0]}")
@@ -48,6 +50,7 @@ for _, rgb_path, _, depth_path in tqdm(matched_pairs, desc="Evaluting metric dep
 
     # === Compute Metrics ===
     valid_mask = (depth_gt > 0) & (depth_pred > 0)  # Ignore invalid pixels
+    # valid_mask = (depth_gt > 0) & (depth_pred > 0) & (depth_pred < 2) # Ignore invalid pixels
 
     abs_rel = np.mean(np.abs(depth_pred[valid_mask] - depth_gt[valid_mask]) / depth_gt[valid_mask])
     rmse = np.sqrt(np.mean((depth_pred[valid_mask] - depth_gt[valid_mask])**2))
@@ -61,6 +64,12 @@ for _, rgb_path, _, depth_path in tqdm(matched_pairs, desc="Evaluting metric dep
     # Store Errors
     abs_rel_errors.append(abs_rel)
     rmse_errors.append(rmse)
+
+    print(f"AbsRel: {abs_rel:.4f}, RMSE: {rmse:.4f}, δ1: {delta1[-1]*100:.2f}%")
+
+    if i == 200:
+        break
+
 
 # === Print Final Metrics ===
 print("\n=== Depth Estimation Evaluation Results ===")

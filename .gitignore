@@ -177,4 +177,4 @@ datasets/
 checkpoints/
 
 # VSCode settings
-.vscode
+launch.json

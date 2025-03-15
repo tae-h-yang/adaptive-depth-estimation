@@ -62,7 +62,7 @@ class RelativeDepthEstimator(DepthAnythingV2):
         return metric_depth
 
 if __name__ == "__main__":
-    relative_depth_estimator = RelativeDepthEstimator(encoder='vitl')
+    relative_depth_estimator = RelativeDepthEstimator(encoder='vits')
     start = timer()
     relative_depth = relative_depth_estimator.infer('datasets/TUM_RGBD/rgbd_dataset_freiburg1_desk/rgb/1305031453.359684.png')
     end = timer()
