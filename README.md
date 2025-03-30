@@ -1,5 +1,4 @@
-# Enhancing Monocular Metric Depth Estimation through Adaptive
-Scaling
+# Enhancing Monocular Metric Depth Estimation through Adaptive Scaling
 
 This repository implements a lightweight adaptive scaling framework to correct scale ambiguity in monocular depth estimation. The method learns to predict an image-specific scaling factor that, when applied to relative depth predictions (e.g., from Depth Anything V2), significantly improves metric depth accuracy — all without extra sensors or modifications to the base depth model.
 
