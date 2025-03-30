@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from timeit import default_timer as timer
 from metric_depth.depth_anything_v2.dpt import DepthAnythingV2
-from util import inspect_depth
+from util.utils import inspect_depth
 
 class MetricDepthEstimator(DepthAnythingV2):
     def __init__(self, encoder='vitl', dataset='hypersim', max_depth=20):

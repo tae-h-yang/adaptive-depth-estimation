@@ -35,7 +35,7 @@ class MaxDepthEvalDataset(Dataset):
 # Load Model
 device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
 model = MaxDepthPredictor().to(device)
-checkpoint_path = "adaptive_depth/adaptive_depth_predictor2.pth"
+checkpoint_path = "adaptive_scaling/max_depth_predictor2.pth"
 
 if os.path.exists(checkpoint_path):
     checkpoint = torch.load(checkpoint_path, map_location=device)
@@ -47,7 +47,7 @@ else:
 model.eval()
 
 # Load Dataset
-eval_dataset = MaxDepthEvalDataset("adaptive_depth_depth/training_data_office_0003.npy")  # Change path if needed
+eval_dataset = MaxDepthEvalDataset("adaptive_scaling/training_data_office_0003.npy")  # Change path if needed
 eval_loader = DataLoader(eval_dataset, batch_size=1, shuffle=False)
 
 # Evaluation Metrics

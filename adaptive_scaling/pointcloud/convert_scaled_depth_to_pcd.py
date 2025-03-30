@@ -8,8 +8,8 @@ rgb = cv2.imread(rgb_path)
 rgb = cv2.cvtColor(rgb, cv2.COLOR_BGR2RGB)  # Convert to RGB format
 
 # Load rescaled depth maps
-depth_pred_true = np.load("adaptive_depth/pointcloud/rescaled_depth_gt.npy")  # Ground truth scale
-depth_pred_pred = np.load("adaptive_depth/pointcloud/rescaled_depth_predicted.npy")  # Predicted scale
+depth_pred_true = np.load("adaptive_scaling/pointcloud/rescaled_depth_gt.npy")  # Ground truth scale
+depth_pred_pred = np.load("adaptive_scaling/pointcloud/rescaled_depth_predicted.npy")  # Predicted scale
 
 # Intrinsic Parameters
 fx_d = 582.62448167737955
@@ -49,5 +49,5 @@ def generate_pointcloud(depth_rescaled, filename):
     print(f"Point cloud saved as {filename}")
 
 # Generate and save point clouds
-generate_pointcloud(depth_pred_true, "adaptive_depth/pointcloud/rescaled_depth_gt.ply")
-generate_pointcloud(depth_pred_pred, "adaptive_depth/pointcloud/rescaled_depth_predicted.ply")
+generate_pointcloud(depth_pred_true, "adaptive_scaling/pointcloud/rescaled_depth_gt.ply")
+generate_pointcloud(depth_pred_pred, "adaptive_scaling/pointcloud/rescaled_depth_predicted.ply")

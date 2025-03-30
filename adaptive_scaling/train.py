@@ -61,10 +61,10 @@ if __name__ == "__main__":
     batch_size = 30
     learning_rate = 1e-3
     epochs = 30
-    checkpoint_path = "adaptive_depth/max_depth_predictor2.pth"
+    checkpoint_path = "adaptive_scaling/max_depth_predictor2.pth"
 
     # Load Dataset and Split into Training/Validation
-    dataset = MaxDepthDataset("adaptive_depth/training_data_office_0026.npy")
+    dataset = MaxDepthDataset("adaptive_scaling/training_data_office_0026.npy")
     train_size = int(0.8 * len(dataset))
     val_size = len(dataset) - train_size
     train_set, val_set = random_split(dataset, [train_size, val_size])
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.5)
 
     # Load Checkpoint if Exists
-    checkpoint_path = "adaptive_depth/max_depth_predictor2.pth"
+    checkpoint_path = "adaptive_scaling/max_depth_predictor2.pth"
     start_epoch = 0
     # if os.path.exists(checkpoint_path):
     #     checkpoint = torch.load(checkpoint_path, map_location=device)
@@ -146,7 +146,7 @@ if __name__ == "__main__":
     plt.ylabel("Loss (Log Scale)")
     plt.legend()
     plt.title("Training & Validation Loss (Log Scale)")
-    plt.savefig("adaptive_depth/loss_curves.png")
+    plt.savefig("adaptive_scaling/loss_curves.png")
     plt.show()
 
     print("Training completed!")

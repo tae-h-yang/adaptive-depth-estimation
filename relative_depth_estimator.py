@@ -1,7 +1,7 @@
 import cv2
 import torch
 from timeit import default_timer as timer
-from util import inspect_depth
+from util.utils import inspect_depth
 from depth_anything_v2.dpt import DepthAnythingV2
 
 class RelativeDepthEstimator(DepthAnythingV2):

@@ -1,0 +1,22 @@
+// {
+//     // Use IntelliSense to learn about possible attributes.
+//     // Hover to view descriptions of existing attributes.
+//     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Python Debugger: Current File",
+//             "type": "debugpy",
+//             "request": "launch",
+//             "program": "${file}",
+//             "console": "integratedTerminal",
+//             "args": [
+//                 "--encoder", "vitl",
+//                 "--load-from", "checkpoints/depth_anything_v2_metric_hypersim_vitl.pth",
+//                 "--max-depth", "20",
+//                 "--img-path", "datasets/TUM_RGBD/rgbd_dataset_freiburg1_desk/rgb/1305031452.791720.png",
+//                 "--outdir", "."
+//             ]
+//         }
+//     ]
+// }

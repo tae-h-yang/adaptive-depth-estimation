@@ -77,7 +77,7 @@ def compute_best_max_depth(dataset_path, initial_max_depth=20.0, absrel_thresh=0
     filtered_training_data = [(img, sf) for img, sf in training_data if lower <= np.exp(sf) <= upper]
 
     dataset_name = dataset_path.split("/")[-1]  # Extract dataset name
-    np.save(f"adaptive_depth/training_data_{dataset_name}.npy", filtered_training_data)
+    np.save(f"adaptive_scaling/training_data_{dataset_name}.npy", filtered_training_data)
     print(f"Saved {len(filtered_training_data)} reliable training samples!")
     return filtered_training_data
 

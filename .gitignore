@@ -175,6 +175,4 @@ datasets/
 
 # Checkpoints
 checkpoints/
-
-# VSCode settings
-launch.json
+*.pth

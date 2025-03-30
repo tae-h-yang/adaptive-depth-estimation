@@ -10,7 +10,7 @@ from train import MaxDepthPredictor  # Trained scaling factor model
 dataset_path = "datasets/sync/office_0026"
 
 # === Load True Scaling Factors ===
-true_scale_factors = dict(np.load("adaptive_depth/training_data_office_0026.npy", allow_pickle=True))
+true_scale_factors = dict(np.load("adaptive_scaling/training_data_office_0026.npy", allow_pickle=True))
 
 # === Load Depth Anything V2 Model ===
 initial_max_depth = 20.0
@@ -19,7 +19,7 @@ model = MetricDepthEstimator(encoder='vits', dataset='hypersim', max_depth=initi
 # === Load Trained Model for Scaling Factor Prediction ===
 device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
 scale_model = MaxDepthPredictor().to(device)
-scale_model.load_state_dict(torch.load("adaptive_depth/max_depth_predictor2.pth", map_location=device)["model_state"])
+scale_model.load_state_dict(torch.load("adaptive_scaling/max_depth_predictor2.pth", map_location=device)["model_state"])
 scale_model.eval()
 
 # === Get Sorted List of RGB and Depth Files ===
@@ -72,8 +72,8 @@ depth_pred_true = depth_pred * true_scale_factor
 depth_pred_pred = depth_pred * predicted_scale_factor
 
 # === Save Depth Maps as NPY Files ===
-np.save("adaptive_depth/pointcloud/rescaled_depth_gt.npy", depth_pred_true)
-np.save("adaptive_depth/pointcloud/rescaled_depth_predicted.npy", depth_pred_pred)
+np.save("adaptive_scaling/pointcloud/rescaled_depth_gt.npy", depth_pred_true)
+np.save("adaptive_scaling/pointcloud/rescaled_depth_predicted.npy", depth_pred_pred)
 
 print("Saved rescaled depth maps:")
 print("- rescaled_depth_gt.npy (Using ground truth scale)")

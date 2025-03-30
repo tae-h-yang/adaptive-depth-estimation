@@ -1,4 +1,4 @@
 {
     // Enalbe vscode intellisense for the submodule
-    "python.analysis.extraPaths": ["./Depth-Anything-V2", "./adaptive_depth"]
+    "python.analysis.extraPaths": ["./Depth-Anything-V2", "./adaptive_depth", "./util"]
 }

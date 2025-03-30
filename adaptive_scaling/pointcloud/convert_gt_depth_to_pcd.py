@@ -64,5 +64,5 @@ pcd.points = o3d.utility.Vector3dVector(np.array(points))
 pcd.colors = o3d.utility.Vector3dVector(np.array(colors))
 
 # Save as PLY file
-o3d.io.write_point_cloud("adaptive_depth/pointcloud/gt_pointcloud.ply", pcd)
+o3d.io.write_point_cloud("adaptive_scaling/pointcloud/gt_pointcloud.ply", pcd)
 print("Point cloud saved as output_pointcloud.ply")

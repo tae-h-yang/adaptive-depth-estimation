@@ -3,7 +3,7 @@ import numpy as np
 from tqdm import tqdm
 from timeit import default_timer as timer
 from metric_depth_estimator import MetricDepthEstimator
-from util import associate_time_stamps, evaluate_matched_pairs
+from util.utils import associate_time_stamps, evaluate_matched_pairs
 
 # === Load Matched RGB and Depth Image Pairs ===
 dataset_path = "datasets/TUM_RGBD/rgbd_dataset_freiburg1_desk"
